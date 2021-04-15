@@ -6,7 +6,9 @@
 # Pokedex
 Uma aplicação feita usando duas Apis, uma para imagens e outra para informações.
 
-![](./img/pokedexgif.gif)
+<p align="center">
+  <img src="img/pokemongif.gif" alt="Logo">
+</p>
 
 ## Responsividade
 A aplicação foi feita tanto para se adaptar ao mobile quanto para desktops
