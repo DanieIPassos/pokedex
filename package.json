@@ -1,0 +1,26 @@
+{
+  "name": "pokedex",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">\r   <img src=\"img/Pokedexia.jpg\" alt=\"Logo\" width=\"350\">\r   <h3 align=\"center\">Pokedex</h3>\r </p>",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SentlySS/pokedex.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SentlySS/pokedex/issues"
+  },
+  "homepage": "https://github.com/SentlySS/pokedex#readme",
+  "dependencies": {
+    "axios": "^1.5.0",
+    "esm": "^3.2.25",
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.2"
+  }
+}

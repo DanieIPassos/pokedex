@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>PokeDex</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/htmx.org@1.9.5" integrity="sha384-xcuj3WpfgjlKF+FXhSQFQ0ZNr39ln+hwjN3npfM9VBnUskLolQAcN80McRIVOPuO" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Pokedex</h1>
+    <ul id="pokedex" class="pokedex" hx-trigger="load" hx-target="#pokedex" hx-swap="innerHTML" hx-get="/generate-pokemon-list"></ul>
+  </div>
+
+  <!-- Modal HTML -->
+  <div id="modal" style="display: none;">
+    <div class="modal-content">
+      <h2>Meu Modal HTMX</h2>
+      <p>Com certeza isso não é um modal</p>
+      <button hx-get="/close-modal" hx-swap="none">Fechar</button>
+    </div>
+  </div>
+
+  <script>
+    document.body.addEventListener('click', function (event) {
+      if (event.target.matches('[hx-get="/modal"]')) {
+        const modal = document.getElementById('modal');
+        modal.style.display = 'block';
+      }
+
+      if (event.target.matches('[hx-get="/close-modal"]')) {
+        const modal = document.getElementById('modal');
+        modal.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+
+</html>
