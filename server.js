@@ -9,10 +9,6 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
 });
 
-app.get("/pokemon-page/:id", (req, res) => {
-  res.sendFile(__dirname + "/public/pokemon.html");
-});
-
 app.get("/generate-pokemon-list", (req, res) => {
   const getPokemonUrl = (id) => `https://pokeapi.co/api/v2/pokemon/${id}`;
   const generatePokemonPromises = () =>
@@ -35,12 +31,12 @@ app.get("/generate-pokemon-list", (req, res) => {
       accumulator += `
         <li class="card ${
           elementTypes[0]
-        }" hx-get="/modal" hx-swap="beforeend hx-target="body">
-          <img class="card-image" alt="${name}" src="./assets/img/${id}.png" hx-get="/modal" hx-swap="beforeend hx-target="body"/>
-          <h2 class="card-title" hx-get="/modal" hx-swap="beforeend hx-target="body">${id}. ${name}</h2>
-          <p class="card-subtitle" hx-get="/modal" hx-swap="beforeend hx-target="body">${elementTypes.join(
-            " | ",
-          )}</p>
+        }" hx-get="/pokemon/${id}" hx-trigger="click" hx-swap="innerHTML" hx-target="#modal">
+          <img class="card-image" alt="${name}" src="./assets/img/${id}.png" hx-get="/pokemon/${id}" hx-swap="innerHTML" hx-target="#modal"/>
+          <h2 class="card-title" hx-get="/pokemon/${id}" hx-swap="innerHTML" hx-target="#modal">${id}. ${name}</h2>
+          <p class="card-subtitle" hx-get="/pokemon/${id}" hx-swap="innerHTML" hx-target="#modal">${elementTypes.join(
+        " | ",
+      )}</p>
         </li>
       `;
       return accumulator;
@@ -60,17 +56,8 @@ app.get("/generate-pokemon-list", (req, res) => {
 
 app.get("/pokemon/:id", (req, res) => {
   const id = req.params.id;
-  const getPokemonById = (id) => {
-    const apiUrl = `https://pokeapi.co/api/v2/pokemon/${id}`;
-    return axios.get(apiUrl).then((response) => {
-      if (response.status === 200 && response.data) {
-        return response.data;
-      } else {
-        throw new Error("Resposta não contém dados válidos");
-      }
-    });
-  };
-  res.send(`Pokemon ${id}`);
+  res.send(`<h1 class="title">Pokemon ${id}</h1>
+  <button hx-get="/close-modal" hx-swap="none">Fechar</button>`);
 });
 
 app.get("/modal", (req, res) => {

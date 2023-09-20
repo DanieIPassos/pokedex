@@ -132,6 +132,12 @@ h1 {
 	z-index: 2;
 }
 
+.title {
+	text-align: center;
+	font-size: 32px;
+	color: black;
+}
+
 @keyframes bounce {
 	20% {
 			transform: translateY(-6px);

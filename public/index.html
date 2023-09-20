@@ -18,19 +18,27 @@
 
   <!-- Modal HTML -->
   <div id="modal" style="display: none;">
-    <div class="modal-content">
+    <!-- <div class="modal-content">
       <h2>Meu Modal HTMX</h2>
       <p>Com certeza isso não é um modal</p>
       <button hx-get="/close-modal" hx-swap="none">Fechar</button>
-    </div>
+    </div> -->
   </div>
 
   <script>
     document.body.addEventListener('click', function (event) {
-      if (event.target.matches('[hx-get="/modal"]')) {
+      // if (event.target.matches('[hx-get="/pokemon/2"]')) {
+      //   const modal = document.getElementById('modal');
+      //   modal.style.display = 'block';
+      // }
+      if (event.target.classList.contains('card')) {
         const modal = document.getElementById('modal');
         modal.style.display = 'block';
       }
+      // document.querySelectorAll(".card").addEventListener("click", function () {
+      //   const modal = document.getElementById('modal');
+      //   modal.style.display = 'block';
+      // });
 
       if (event.target.matches('[hx-get="/close-modal"]')) {
         const modal = document.getElementById('modal');
